@@ -5358,12 +5358,12 @@ public function deposit_loan_saving(){
 
         $loan_code = $this->queries->get_loanCustomerCode($customer_id);
         $code = $loan_code->code;
-        $phones = $loan_code->phone_no;
+        $phone = $loan_code->phone_no;
         $comp_id = $loan_code->comp_id;
          
         $sms = 'Namba ya Siri Ya Mkopo Wako ni ' .$code;
         $massage = $sms;
-        $phone = '0'.substr($phones, 3,10);
+       
         // print_r($massage);
         //      exit();
        
