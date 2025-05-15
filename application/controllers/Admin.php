@@ -9977,16 +9977,24 @@ public function sendsms($phone,$massage){
 	//public function sendsms(){f
 	//$phone = '255628323760';
 	//$massage = 'mapenzi yanauwa';
-	$api_key = 'rD5Wu6JknNvHjBFT';
+	$api_key = '';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 	//$api_key = 'qFzd89PXu1e/DuwbwxOE5uUBn6';
 	//$curl = curl_init();
-  $ch = curl_init();
-  curl_setopt($ch, CURLOPT_URL,"https://galadove.loan-pocket.com/api/v1/receive/action/send/sms");
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS,
-            'apiKey='.$api_key.'&phoneNumber='.$phone.'&messageContent='.$massage);
+  $url = "https://sms-api.kadolab.com/api/send-sms";
+  $token = "18|m5AeQ0Lyg2Mn1hVupiJd2aXGUJHYYGlVQHhq6WOpc38d8ca6";
 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $ch = curl_init($url);
+  curl_setopt($ch, CURLOPT_POST, true);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Authorization: Bearer '. $token,
+    'Content-Type: application/json',
+  ]);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+    "phoneNumbers" => ["+$phone"],
+    "message" => $massage
+  ]));
+
 $server_output = curl_exec($ch);
 curl_close ($ch);
 
